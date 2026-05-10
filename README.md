@@ -1,74 +1,78 @@
 # FitTrack — Fitness Tracking App
 
-A full-stack web application where users create an account, log daily meals and workouts, and track their progress over time with interactive charts.
+FitTrack is a full-stack web application that allows users to log meals and workouts, track daily nutrition, and visualize long-term fitness progress through interactive charts.
 
-## Features
+The goal of the project is to make nutrition and fitness tracking simple, structured, and data-driven.
 
-- **User Authentication**: Register and log in with username/password. Sessions persist across page reloads.
-- **Meal Logging**: Search a built-in database of ~200 common foods, select one, choose a number of servings, and log it. The app multiplies per-serving macros (calories, protein, carbs, fat) by the number of servings and stores the computed totals.
-- **Workout Tracking**: Log exercises with sets, reps, and weight (for strength training) or duration in minutes (for cardio).
-- **Daily Summaries**: See total calories, protein, carbs, and fat for any day. Navigate between days with arrow buttons.
-- **Progress Charts**: Four Chart.js visualizations:
-  - Line chart showing daily calorie intake over the past 30 days
-  - Stacked bar chart breaking down protein/carbs/fat per day
-  - Bar chart showing workout frequency per day
-  - Doughnut chart showing today's macro split
-- **Responsive UI**: Works on desktop and mobile.
+---
+
+## Key Features
+
+- **User authentication system**  
+  Secure registration and login with persistent sessions across page reloads.
+
+- **Meal tracking with nutrition database**  
+  Users can search and log foods from a built-in database of ~200 common items. Macro values (calories, protein, carbs, fat) are automatically calculated based on serving size.
+
+- **Workout logging system**  
+  Supports both strength training (sets, reps, weight) and cardio (duration-based tracking).
+
+- **Daily nutrition summaries**  
+  Users can view total macros for any selected day and navigate across dates.
+
+- **Progress analytics dashboard**  
+  Interactive charts visualize long-term trends in nutrition and fitness.
+
+---
+
+## Data Visualizations
+
+Built using Chart.js:
+
+- 30-day calorie intake trend (line chart)
+- Daily macro breakdown (stacked bar chart)
+- Workout frequency over time (bar chart)
+- Current day macro distribution (doughnut chart)
+
+---
 
 ## Tech Stack
 
-- **Backend**: Python, Flask, SQLite
-- **Frontend**: HTML, CSS, JavaScript, Chart.js
-- **API**: 12 RESTful endpoints
+- **Backend:** Python, Flask, SQLite  
+- **Frontend:** HTML, CSS, JavaScript  
+- **Visualization:** Chart.js  
+- **Architecture:** REST API + single-page frontend
 
-## API Endpoints
+---
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/auth/register` | Create a new account |
-| POST | `/api/auth/login` | Log in |
-| POST | `/api/auth/logout` | Log out |
-| GET | `/api/auth/me` | Check current session |
-| GET | `/api/foods/search?q=` | Search nutrition database |
-| GET | `/api/foods/<name>` | Get nutrition info for a food |
-| GET | `/api/meals?date=` | Get meals for a date |
-| POST | `/api/meals` | Log a meal |
-| DELETE | `/api/meals/<id>` | Delete a meal |
-| GET | `/api/workouts?date=` | Get workouts for a date |
-| POST | `/api/workouts` | Log a workout |
-| DELETE | `/api/workouts/<id>` | Delete a workout |
-| GET | `/api/stats/calories` | Calorie totals (past 30 days) |
-| GET | `/api/stats/macros` | Macro breakdown (past 30 days) |
-| GET | `/api/stats/workouts` | Workout frequency (past 30 days) |
+## System Design
 
-## Nutrition Database
+FitTrack is structured as a lightweight REST-based full-stack application:
 
-Custom Python dictionary of ~200 common foods, each mapped to calories, protein (g), carbs (g), and fat (g) per serving. Categories include proteins, eggs & dairy, grains, fruits, vegetables, legumes & nuts, oils & condiments, snacks & prepared foods, drinks, and breakfast items.
+- **Backend (Flask API):** Handles authentication, meal/workout CRUD operations, and statistical aggregation.
+- **Frontend (Single Page App):** Dynamic UI built with vanilla JavaScript for fast interactions without page reloads.
+- **Nutrition Engine:** Custom dataset of ~200 foods with precomputed macros per serving.
+- **Analytics Layer:** Aggregates user data into time-based summaries for visualization.
 
-## Running Locally
+---
 
-```bash
-# Clone the repo
-git clone https://github.com/hrashidzada/fitness-tracker.git
-cd fitness-tracker
+## My Role
 
-# Install Flask
-pip install flask
+I built the entire application end-to-end, including:
 
-# Run the app
-python app.py
-```
+- Designing and implementing all REST API endpoints
+- Building the authentication and session system
+- Creating the nutrition database and macro calculation logic
+- Developing the frontend UI and interactive dashboard
+- Integrating Chart.js for data visualization
+- Structuring the application for scalability and maintainability
 
-Then open `http://localhost:5000` in your browser.
+---
 
-## Project Structure
+## What I Learned
 
-```
-fitness-tracker/
-├── app.py                # Flask server with all API endpoints
-├── nutrition_db.py       # ~200 food nutrition database
-├── templates/
-│   └── index.html        # Single-page frontend (HTML/CSS/JS + Chart.js)
-├── requirements.txt
-└── README.md
-```
+- Building full-stack applications with Flask
+- Designing RESTful APIs and data models
+- Handling authentication and session persistence
+- Working with client-side data visualization
+- Structuring and integrating a nutrition data system
